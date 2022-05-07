@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -12,12 +13,11 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.unit.dp
 import com.example.xoii.components.CenterTopAppBar
+import com.example.xoii.ui.tabs.EmptyTab
 import com.example.xoii.ui.theme.XoiiTheme
 import com.example.xoii.viewModels.MainViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -47,7 +47,6 @@ class MainActivity : ComponentActivity() {
                         Column(
                             Modifier
                                 .fillMaxSize()
-                                .padding(padding)
                         ) {
 
                             val coroutineScope = rememberCoroutineScope()
@@ -70,7 +69,7 @@ class MainActivity : ComponentActivity() {
                                         icon = {
                                             Icon(
                                                 imageVector = icon as ImageVector,
-                                                contentDescription = "Share",
+                                                contentDescription = "",
                                                 tint = Color.White
                                             )
                                         },
@@ -88,21 +87,13 @@ class MainActivity : ComponentActivity() {
                             HorizontalPager(
                                 count = pages.size,
                                 state = pagerState,
-                                // Add 16.dp padding to 'center' the pages
-                                contentPadding = PaddingValues(16.dp),
                                 modifier = Modifier
                                     .weight(1f)
-                                    .fillMaxWidth()
+                                    .fillMaxSize()
                             ) { page ->
                                 // Our content for each page
-                                Card {
-                                    Box(Modifier.fillMaxSize()) {
-                                        Text(
-                                            text = "Page: ${pages[page]}",
-                                            style = MaterialTheme.typography.h4,
-                                            modifier = Modifier.align(Alignment.Center)
-                                        )
-                                    }
+                                if (page != 1) {
+                                    EmptyTab()
                                 }
                             }
                         }
