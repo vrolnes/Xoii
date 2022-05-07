@@ -11,4 +11,8 @@ class MainViewModel () : ViewModel(){
         return dummyRepository.getTabs()
     }
 
+    fun getCargoData(): List<String> {
+        return dummyRepository.getCargoData()
+    }
+
 }
