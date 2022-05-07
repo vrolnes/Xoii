@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Xoii">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.Xoii">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
