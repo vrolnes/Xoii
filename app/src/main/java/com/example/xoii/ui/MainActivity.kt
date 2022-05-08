@@ -26,7 +26,9 @@ class MainActivity : ComponentActivity() {
             .withPermissions(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION)
             .withListener(object: MultiplePermissionsListener{
                 override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
-
+                    setContent {
+                        Navigation(mainViewModel)
+                    }
                 }
 
                 override fun onPermissionRationaleShouldBeShown(
@@ -36,9 +38,5 @@ class MainActivity : ComponentActivity() {
                 }
             })
             .check()
-
-        setContent {
-            Navigation(mainViewModel)
-        }
     }
 }
