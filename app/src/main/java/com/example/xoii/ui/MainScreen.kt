@@ -14,8 +14,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.xoii.R
 import com.example.xoii.components.CenterTopAppBar
 import com.example.xoii.ui.tabs.EmptyTab
 import com.example.xoii.ui.tabs.UploadTab
@@ -35,7 +37,7 @@ fun MainScreenComposable(mainViewModel: MainViewModel, navController: NavControl
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            Scaffold(topBar = { TopBar(title = "Berlin Adlershof") }) { padding ->
+            Scaffold(topBar = { TopBar(title = stringResource(id = R.string.topBarTitle)) }) { padding ->
                 val pages = remember {
                     mainViewModel.getTabs()
                 }
@@ -94,46 +96,50 @@ fun MainScreenComposable(mainViewModel: MainViewModel, navController: NavControl
                             UploadTab(mainViewModel.getCargoData(), navController)
                         }
                     }
-
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(Color.White)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Place,
-                            contentDescription = "",
-                            tint = Color.Green,
-                        )
-                        Text(
-                            text = "Yükleme adresi sınırlarındasın"
-                        )
-                    }
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(Color.Blue)
-                            .padding(top = 16.dp, bottom = 16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = "YÜKLEME AKIŞI - 1 / 4",
-                            color = Color.White
-                        )
-                        Button(
-                            onClick = { /* Do something! */ },
-                            colors = ButtonDefaults.textButtonColors(
-                                backgroundColor = Color.White
-                            )
-                        ) {
-                            Text("YÜKLEME NOKTASINA GELDİM", color = Color.Blue)
-                        }
-                    }
+                    BottomLayout()
                 }
             }
         }
     }
 
+}
+
+@Composable
+fun BottomLayout(){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.White)
+    ) {
+        Icon(
+            imageVector = Icons.Default.Place,
+            contentDescription = "",
+            tint = Color.Green,
+        )
+        Text(
+            text = stringResource(id = R.string.loadingBoundry)
+        )
+    }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Blue)
+            .padding(top = 16.dp, bottom = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = stringResource(id = R.string.loadingFlow),
+            color = Color.White
+        )
+        Button(
+            onClick = { /* Do something! */ },
+            colors = ButtonDefaults.textButtonColors(
+                backgroundColor = Color.White
+            )
+        ) {
+            Text(stringResource(id = R.string.arrivedText), color = Color.Blue)
+        }
+    }
 }
 
 @Composable

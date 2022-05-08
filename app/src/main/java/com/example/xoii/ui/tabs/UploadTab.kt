@@ -11,6 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -52,7 +53,7 @@ fun Grids(cargoData: List<String>) {
     LazyVerticalGrid(
         cells = GridCells.Fixed(2),
         modifier = Modifier.fillMaxHeight(),
-        contentPadding = PaddingValues(8.dp)
+        contentPadding = PaddingValues(dimensionResource(id = R.dimen.uploadTabGridContentPadding))
     ) {
         items(cargoData.size) { index ->
             OutlinedTextField(cargoData[index])
@@ -66,7 +67,7 @@ fun OutlinedTextField(label: String) {
 
     OutlinedTextField(
         value = text,
-        modifier = Modifier.padding(4.dp),
+        modifier = Modifier.padding(dimensionResource(id = R.dimen.uploadTabTextFieldPadding)),
         onValueChange = { text = it },
         label = { Text(label, fontSize = 12.sp) }
     )
@@ -74,7 +75,9 @@ fun OutlinedTextField(label: String) {
 
 @Composable
 fun ImageShower(image: Painter, navController: NavController) {
-    Image(painter = image, contentDescription = "", modifier = Modifier.clickable {
-        navController.navigate(Screen.ImageViewScreen.withArgs(R.drawable.fileimage.toString()))
-    }.padding(top = 12.dp))
+    Image(painter = image, contentDescription = "", modifier = Modifier
+        .clickable {
+            navController.navigate(Screen.ImageViewScreen.withArgs(R.drawable.fileimage.toString()))
+        }
+        .padding(top = dimensionResource(id = R.dimen.uploadTabImageShowerTopPadding)))
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Empty Tab -->
+    <dimen name="emptyTabTopPadding">16dp</dimen>
+    <dimen name="emptyTabVerticalSpacePadding">16dp</dimen>
+
+    <!-- Upload Tab -->
+    <dimen name="uploadTabGridContentPadding">8dp</dimen>
+    <dimen name="uploadTabTextFieldPadding">4dp</dimen>
+    <dimen name="uploadTabImageShowerTopPadding">12dp</dimen>
+</resources>

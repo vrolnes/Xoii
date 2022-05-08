@@ -16,6 +16,10 @@ import com.example.xoii.extensions.toPx
 import kotlin.math.abs
 import kotlin.math.max
 
+/*
+* Imported from : https://gist.github.com/evansgelist/aadcd633e9b160f9f634c16e99ffe163
+* */
+
 val AppBarHeight = 56.dp
 val AppBarHorizontalPadding = 4.dp
 val TitleIconModifier = Modifier.fillMaxHeight()

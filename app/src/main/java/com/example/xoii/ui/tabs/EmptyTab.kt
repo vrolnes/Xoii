@@ -9,16 +9,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.xoii.R
 
 @Composable
 fun EmptyTab() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 16.dp),
+            .padding(top = dimensionResource(id = R.dimen.emptyTabTopPadding)),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.emptyTabVerticalSpacePadding))
     ) {
         Icon(
             imageVector = Icons.Default.Info,
@@ -27,7 +30,7 @@ fun EmptyTab() {
         )
 
         Text(
-            text = "Üzgünüz. Bu alan şimdilik boş..."
+            text = stringResource(id = R.string.empty_message)
         )
     }
 }

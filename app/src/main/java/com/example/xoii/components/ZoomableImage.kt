@@ -23,6 +23,10 @@ import androidx.compose.ui.res.painterResource
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.launch
 
+/*
+* Imported from: https://github.com/joaopegoraro/ComposeZoomableImagePlus/blob/main/zoomableimage/src/main/java/com/umut/soysal/zoomableimage/ZoomableImage.kt
+* */
+
 @ExperimentalFoundationApi
 @Composable
 fun ZoomableImage(

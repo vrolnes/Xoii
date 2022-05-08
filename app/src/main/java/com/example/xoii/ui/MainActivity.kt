@@ -21,6 +21,7 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         Dexter.withContext(this)
             .withPermissions(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION)
             .withListener(object: MultiplePermissionsListener{
@@ -35,6 +36,7 @@ class MainActivity : ComponentActivity() {
                 }
             })
             .check()
+
         setContent {
             Navigation(mainViewModel)
         }

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Xoii</string>
+    <string name="topBarTitle">Berlin Adlershof</string>
+    <string name="loadingFlow">YÜKLEME AKIŞI - 1 / 4</string>
+    <string name="arrivedText">YÜKLEME NOKTASINA GELDİM</string>
+    <string name="loadingBoundry">Yükleme adresi sınırlarındasın</string>
+    <string name="empty_message">"Üzgünüz. Bu alan şimdilik boş..."</string>
 </resources>
