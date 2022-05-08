@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.xoii.R
+import com.example.xoii.components.MapScreen
 import com.example.xoii.navigation.Screen
 
 @Composable
@@ -26,7 +27,9 @@ fun UploadTab(cargoData: List<String>, navController: NavController) {
         modifier = Modifier
             .fillMaxSize(),
     ) {
-        Maps()
+        Column(modifier = Modifier.fillMaxHeight(0.25f)) {
+            Maps()
+        }
         Row {
             Column(modifier = Modifier.weight(0.66f)) {
                 Grids(cargoData)
@@ -40,7 +43,7 @@ fun UploadTab(cargoData: List<String>, navController: NavController) {
 
 @Composable
 fun Maps() {
-    Text(text = "Maps", modifier = Modifier.fillMaxWidth())
+    MapScreen()
 }
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -73,5 +76,5 @@ fun OutlinedTextField(label: String) {
 fun ImageShower(image: Painter, navController: NavController) {
     Image(painter = image, contentDescription = "", modifier = Modifier.clickable {
         navController.navigate(Screen.ImageViewScreen.withArgs(R.drawable.fileimage.toString()))
-    })
+    }.padding(top = 12.dp))
 }
