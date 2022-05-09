@@ -25,3 +25,9 @@ Application uses the following libraries and etc. :
 ## Installation
 
 Download the code and run.
+
+## 📱 Screenshots
+
+<p align="center">
+  <img src="docs/1.png" width="32%"/>
+</p>
