@@ -9,7 +9,8 @@ Demo project for demonstrate simple usage of jetpack libraries.
 
 - Shows current location on the map
 - Multiple tab support
-- Zoomable ImageViewer (Click on image to open)
+- Zoomable ImageViewer (Click on document image to open)
+- Image picker (Pick Images from Camera or Gallery)
 
 ## Tech
 
@@ -21,6 +22,7 @@ Application uses the following libraries and etc. :
 - [Maps Compose] - Library for showing maps on compose screen
 - [Play Services Maps] - Library for getting location services
 - [Dexter] - Library for handling runtime permissions
+- [TedImagePicker] - Library for getting images from device
 
 ## Installation
 
