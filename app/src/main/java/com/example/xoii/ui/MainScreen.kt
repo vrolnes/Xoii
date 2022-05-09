@@ -1,5 +1,6 @@
 package com.example.xoii.ui
 
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -7,9 +8,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.xoii.R
 import com.example.xoii.components.CenterTopAppBar
+import com.example.xoii.components.HorizontalImageViewer
 import com.example.xoii.ui.tabs.EmptyTab
 import com.example.xoii.ui.tabs.UploadTab
 import com.example.xoii.ui.theme.XoiiTheme
@@ -34,6 +35,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun MainScreenComposable(mainViewModel: MainViewModel, navController: NavController) {
+    val images = remember{ mutableStateListOf<Uri>() }
     XoiiTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -88,7 +90,7 @@ fun MainScreenComposable(mainViewModel: MainViewModel, navController: NavControl
                         count = pages.size,
                         state = pagerState,
                         modifier = Modifier
-                            .weight(1f)
+                            .weight(0.75f)
                             .fillMaxSize()
                     ) { page ->
                         // Our content for each page
@@ -98,16 +100,22 @@ fun MainScreenComposable(mainViewModel: MainViewModel, navController: NavControl
                             UploadTab(mainViewModel.getCargoData(), navController)
                         }
                     }
-                    BottomLayout()
+                    ShowSelectedImages(uriList = images)
+                    BottomLayout(images)
                 }
             }
         }
     }
 
 }
-
 @Composable
-fun BottomLayout(){
+fun ShowSelectedImages(uriList : List<Uri>){
+    Column(modifier = Modifier.fillMaxWidth()) {
+        HorizontalImageViewer(images = uriList)
+    }
+}
+@Composable
+fun BottomLayout(images: SnapshotStateList<Uri>){
     val context = LocalContext.current
     Row(
         modifier = Modifier
@@ -138,10 +146,7 @@ fun BottomLayout(){
             onClick = {
                 TedImagePicker.with(context = context)
                     .startMultiImage { uriList ->
-                    uriList.forEach{
-                        print(it.toString())
-                    }
-
+                        images.addAll(uriList)
                     }
                       },
             colors = ButtonDefaults.textButtonColors(
