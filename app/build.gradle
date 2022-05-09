@@ -43,6 +43,10 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -77,5 +81,8 @@ dependencies {
 
     //Permission Library
     implementation 'com.karumi:dexter:6.2.3'
+
+
+    implementation 'io.github.ParkSangGwon:tedimagepicker:1.2.8'
 
 }

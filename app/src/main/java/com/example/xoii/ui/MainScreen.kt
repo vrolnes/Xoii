@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -27,6 +28,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
+import gun0912.tedimagepicker.builder.TedImagePicker
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
@@ -106,6 +108,7 @@ fun MainScreenComposable(mainViewModel: MainViewModel, navController: NavControl
 
 @Composable
 fun BottomLayout(){
+    val context = LocalContext.current
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -132,7 +135,15 @@ fun BottomLayout(){
             color = Color.White
         )
         Button(
-            onClick = { /* Do something! */ },
+            onClick = {
+                TedImagePicker.with(context = context)
+                    .startMultiImage { uriList ->
+                    uriList.forEach{
+                        print(it.toString())
+                    }
+
+                    }
+                      },
             colors = ButtonDefaults.textButtonColors(
                 backgroundColor = Color.White
             )
